@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soumyashree Patro — Portfolio</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --sage: #7a9e87;
+      --sage-light: #b5cebb;
+      --blush: #e8cfc4;
+      --cream: #f7f2ed;
+      --ink: #1a1a1a;
+      --muted: #888;
+      --border: rgba(122, 158, 135, 0.25);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 3rem;
+      background: rgba(247, 242, 237, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--sage);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--sage);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+
+    .hero-left {
+      background: var(--sage);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 70%, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+    }
+
+    .hero-left::after {
+      content: 'SP';
+      position: absolute;
+      bottom: -2rem;
+      right: -1rem;
+      font-size: 18rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.04);
+      line-height: 1;
+      font-family: 'Cormorant Garamond', serif;
+      pointer-events: none;
+    }
+
+    .photo-frame {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.4);
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      animation: fadeUp 1s ease both;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #a8c4b0, #7a9e87);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .photo-placeholder .initials {
+      font-size: 5rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      line-height: 1;
+    }
+
+    .photo-placeholder .label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      margin-top: 0.5rem;
+      opacity: 0.7;
+      text-transform: uppercase;
+    }
+
+    .hero-badge {
+      margin-top: 2rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0.45rem 1.2rem;
+      border-radius: 2rem;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 4rem;
+      background: var(--blush);
+      position: relative;
+    }
+
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sage), transparent);
+    }
+
+    .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--sage);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      animation: fadeUp 1s ease 0.1s both;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--sage);
+    }
+
+    .hero-tagline {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: #555;
+      line-height: 1.7;
+      max-width: 380px;
+      animation: fadeUp 1s ease 0.3s both;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      animation: fadeUp 1s ease 0.4s both;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: var(--sage);
+      color: white;
+      border-color: var(--sage);
+    }
+
+    .btn-primary:hover {
+      background: #6a8e77;
+      border-color: #6a8e77;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--sage);
+      border-color: var(--sage);
+    }
+
+    .btn-outline:hover {
+      background: var(--sage);
+      color: white;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 3rem;
+    }
+
+    .section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--sage);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 2.5rem;
+    }
+
+    h2 em {
+      font-style: italic;
+      color: var(--sage);
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: white;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #444;
+      font-weight: 300;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: #555;
+      letter-spacing: 0.05em;
+    }
+
+    .contact-item .icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--sage);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    /* ── EDUCATION ── */
+    #education {
+      background: var(--cream);
+    }
+
+    .edu-card {
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2.5rem;
+      background: white;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .edu-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.07);
+    }
+
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--sage);
+    }
+
+    .edu-card .degree {
+      font-size: 1.4rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+
+    .edu-card .school {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--sage);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .edu-card .years {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      background: var(--cream);
+      padding: 0.3rem 0.8rem;
+      border-radius: 2rem;
+      display: inline-block;
+    }
+
+    /* ── SKILLS ── */
+    #skills {
+      background: var(--sage);
+    }
+
+    #skills .section-label {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    #skills .section-label::after {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    #skills h2 {
+      color: white;
+    }
+
+    #skills h2 em {
+      color: var(--blush);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-chip {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      transition: all 0.3s;
+      cursor: default;
+      backdrop-filter: blur(4px);
+    }
+
+    .skill-chip:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateY(-3px);
+    }
+
+    .skill-chip .sk-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .skill-chip .sk-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      color: white;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+    }
+
+    .skill-chip .sk-level {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 0.2rem;
+      font-style: italic;
+    }
+
+    /* ── LANGUAGES ── */
+    #languages {
+      background: var(--blush);
+    }
+
+    .lang-row {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .lang-card {
+      flex: 1;
+      min-width: 200px;
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .lang-card:hover {
+      transform: scale(1.03);
+    }
+
+    .lang-card .flag {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .lang-card .lang-name {
+      font-size: 1.3rem;
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .lang-card .lang-level {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--sage);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    .lang-dots {
+      display: flex;
+      gap: 0.35rem;
+      justify-content: center;
+      margin-top: 0.75rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--sage-light);
+    }
+
+    .dot.filled {
+      background: var(--sage);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--ink);
+      text-align: center;
+    }
+
+    #contact .section-label {
+      color: var(--sage-light);
+      justify-content: center;
+    }
+
+    #contact .section-label::after {
+      display: none;
+    }
+
+    #contact h2 {
+      color: white;
+    }
+
+    #contact h2 em {
+      color: var(--sage-light);
+    }
+
+    #contact p {
+      color: #aaa;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem 1.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 0.5rem;
+      color: white;
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .contact-btn:hover {
+      background: var(--sage);
+      border-color: var(--sage);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      color: #555;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-left {
+        padding: 4rem 2rem 3rem;
+        min-height: 50vh;
+      }
+
+      .hero-right {
+        padding: 3rem 2rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links {
+        gap: 1.2rem;
+      }
+
+      section {
+        padding: 4rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">S. Patro</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-left">
+      <div class="photo-frame">
+        <div class="photo-placeholder">
+          <span class="initials">SP</span>
+          <span class="label">Photo</span>
+        </div>
+      </div>
+      <div class="hero-badge">B.Tech · Computer Science</div>
+    </div>
+    <div class="hero-right">
+      <p class="eyebrow">Portfolio</p>
+      <h1>Soumya<br><em>shree</em><br>Patro</h1>
+      <p class="hero-tagline">
+        A Computer Science student at NIST University — responsible, organised, and eager to bring fresh ideas to her
+        first professional experience.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Get in touch</a>
+        <a href="#skills" class="btn btn-outline">View skills</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label reveal">01 — About</p>
+      <h2 class="reveal">A little <em>about me</em></h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>I'm a first-year B.Tech student in Computer Science at NIST University, Odisha. I consider myself a
+            responsible and orderly person who takes pride in delivering quality work.</p>
+          <p>I'm enthusiastic about programming, data structures, and building software that solves real problems. I'm
+            actively looking forward to my first work experience and eager to contribute meaningfully to any team.</p>
+        </div>
+        <div class="about-contact reveal">
+          <div class="contact-item">
+            <div class="icon">📞</div>
+            <span>+91 8260383716</span>
+          </div>
+          <div class="contact-item">
+            <div class="icon">✉️</div>
+            <span>soumyashreepatro28@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <div class="icon">📍</div>
+            <span>Baliguda, Kandhamala, Odisha, India</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-inner">
+      <p class="section-label reveal">02 — Education</p>
+      <h2 class="reveal">Academic <em>background</em></h2>
+      <div class="edu-card reveal">
+        <div class="degree">Bachelor of Technology in Computer Science</div>
+        <div class="school">NIST University</div>
+        <span class="years">2024 — 2028</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner">
+      <p class="section-label reveal">03 — Skills</p>
+      <h2 class="reveal">Computer <em>skills</em></h2>
+      <div class="skills-grid reveal">
+        <div class="skill-chip">
+          <span class="sk-icon">⚙️</span>
+          <div class="sk-name">C / C++</div>
+          <div class="sk-level">Procedural programming</div>
+        </div>
+        <div class="skill-chip">
+          <span class="sk-icon">☕</span>
+          <div class="sk-name">Java</div>
+          <div class="sk-level">Object-oriented</div>
+        </div>
+        <div class="skill-chip">
+          <span class="sk-icon">🐍</span>
+          <div class="sk-name">Python</div>
+          <div class="sk-level">Scripting & logic</div>
+        </div>
+        <div class="skill-chip">
+          <span class="sk-icon">🌲</span>
+          <div class="sk-name">Data Structures</div>
+          <div class="sk-level">Arrays, trees, graphs</div>
+        </div>
+        <div class="skill-chip">
+          <span class="sk-icon">🗄️</span>
+          <div class="sk-name">Database Mgmt</div>
+          <div class="sk-level">SQL fundamentals</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section id="languages">
+    <div class="section-inner">
+      <p class="section-label reveal">04 — Languages</p>
+      <h2 class="reveal">I <em>communicate</em> in</h2>
+      <div class="lang-row">
+        <div class="lang-card reveal">
+          <div class="flag">🏠</div>
+          <div class="lang-name">Odia</div>
+          <div class="lang-level">Native</div>
+          <div class="lang-dots">
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+          </div>
+        </div>
+        <div class="lang-card reveal">
+          <div class="flag">🇬🇧</div>
+          <div class="lang-name">English</div>
+          <div class="lang-level">Advanced</div>
+          <div class="lang-dots">
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="lang-card reveal">
+          <div class="flag">🇮🇳</div>
+          <div class="lang-name">Hindi</div>
+          <div class="lang-level">Advanced</div>
+          <div class="lang-dots">
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label reveal">05 — Contact</p>
+      <h2 class="reveal">Let's <em>connect</em></h2>
+      <p class="reveal">I'm open to internships, collaborations, and new opportunities.</p>
+      <div class="contact-links reveal">
+        <a href="mailto:soumyashreepatro28@gmail.com" class="contact-btn">
+          ✉️ &nbsp;soumyashreepatro28@gmail.com
+        </a>
+        <a href="tel:+918260383716" class="contact-btn">
+          📞 &nbsp;+91 8260383716
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Soumyashree Patro — Designed with care
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+
+</html>
